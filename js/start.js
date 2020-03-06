@@ -11,6 +11,16 @@ let btnToBag = document.getElementById('btnToBag');
 // let rightQty = window.bestOffer.right.length;
 // let bestOfferInner = document.getElementById('bestOfferInner');
 
+//isObjectEmpty
+function isObjectEmpty(obj) {
+  console.log(obj);
+  for(var key in obj) {
+    console.log(key);
+    return;
+  }
+  return true;
+}
+
 function showPage() {
   // renderBestOffer();
   renderGoods();
@@ -252,14 +262,17 @@ let discounts = {
   right: []
 };
 
+// console.log(isObjectEmpty(localStorage.getItem('discounts')) );
+
 //Check the discounts from the localStorage
 function checkDiscount() {
-  if( localStorage.getItem('discounts') ) {
+  if( !isObjectEmpty( JSON.parse(localStorage.getItem('discounts') )) ) {
     discounts = JSON.parse( localStorage.getItem('discounts') );
   }
 }
 
 btnToBag.onclick = function(e) {
+  // e.preventDefault();
   addToBag.call(this, this.dataset.id_1);
   addToBag.call(this, this.dataset.id_2);
 

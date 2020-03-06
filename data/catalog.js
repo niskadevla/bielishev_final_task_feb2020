@@ -22,8 +22,8 @@ window.catalog = [{
     hasNew: false,
     category: 'women',
     fashion: 'Casual style',
-    colors: ['Black', 'White'],
-    sizes: ['UK 18'],
+    colors: ['Black', 'White', 'Pink'],
+    sizes: ['UK 18', 'UK 20'],
     thumbnail: './img/boyfriend-tshirt-bohemian-thumb.jpg', // replace with image extracted from item layout
     preview: ['./img/boyfriend-tshirt-bohemian-full_1.jpg', './img/boyfriend-tshirt-bohemian-full_2.jpg', './img/boyfriend-tshirt-bohemian-full_3.jpg'] // replace with paths to images extracted from item layout
 }, {

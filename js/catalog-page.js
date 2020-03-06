@@ -4,6 +4,7 @@ let switcher = document.getElementById('switcher');
 let dropDown = document.getElementById('dropDown');
 let filterMenu = document.getElementById('filterMenu');
 let menuList = document.getElementById('menuList');
+let filterNav = document.getElementById('filterNav');
 let selectedLi;
 let selectedParentLi;
 const FilterNames = {
@@ -133,6 +134,7 @@ function addEventMenuList(e) {
 
   //reRendering
   showFilters(ul.dataset.name, +selectedLi.dataset.index);
+  // showFiltersNav();
   // selectedLi.classList.add('active');
 }
   /****/
@@ -140,14 +142,27 @@ function addEventMenuList(e) {
 //Render filters
 function showFilters(selectedName, activeNum) {
   let html = '';
+  // let html2 = '<ul><li>';
+  let arr = [];
+  let ul = filterNav.querySelector('ul');
+
+  if(ul) {
+    ul.remove();
+  }
 
   for(let name in FilterNames) {
     let selected = name === selectedName ? 'selected' : '';
     let span = '';
+    let name2 = name;
 
     if(!!selected && activeNum !== 0) {
       span = `<span>${FilterNames[name][activeNum]}</span>`;
+      name2 = `<span class="${selected}">${FilterNames[name][activeNum]}</span>`;
     }
+
+    arr.push(name2);
+    // html2 += `
+    //   <li><a class="filter-nav__link ${selected}">${name2},</a></li>`;
 
     html += `
       <li class="filter-menu-main__item ${selected}">
@@ -177,6 +192,18 @@ function showFilters(selectedName, activeNum) {
   }
 
   menuList.innerHTML = html;
+
+  let html2 = '<ul><li class="filter-nav__link">';
+  html2 += arr.join(', ');
+  html2 += '</li><ul>';
+  filterNav.insertAdjacentHTML('afterBegin', html2);
 }
 
 showFilters('Fashion', 2);
+
+//Show filter nav for mobile
+// function showFiltersNav() {
+//   let html = '';
+//
+//   filterNav.insertAdjacentHTML('afteBefore', html2);
+// }

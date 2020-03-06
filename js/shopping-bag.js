@@ -101,18 +101,25 @@ function showBag() {
   // }
 
   let minuses = document.getElementsByClassName('minus');
-  for(let minus of minuses) {
-    minus.onclick = function() {
-      minusGoods.call(this);
-    }
+  for (var i = 0; i < minuses.length; i++) {
+    minuses[i].onclick = minusGoods;
   }
+  // for(let minus of minuses) {
+  //   minus.onclick = function() {
+  //     minusGoods.call(this);
+  //   }
+  // }
 
   let removes = document.getElementsByClassName('remove-item');
-  for(let remove of removes) {
-    remove.onclick = function() {
-      removeGoods.call(this);
-    }
+  for (let i = 0; i < removes.length; i++) {
+    removes[i].onclick = removeGoods;
   }
+
+  // for(let remove of removes) {
+  //   remove.onclick = function() {
+  //     removeGoods.call(this);
+  //   }
+  // }
 }
 
 //Show bottom total sum
@@ -201,11 +208,11 @@ emptyBag.onclick = () => removeBag();
 
 function removeBag() {
   bag = [];
+  removeDiscount();
   showBag();
   saveBagToLS();
   showMiniBag();
   showTotalSum();
-  removeDiscount();
 }
 
 //Checkout
@@ -216,11 +223,11 @@ function clearBag() {
     isPurchased = true;
   }
   bag = [];
+  removeDiscount();
   showBag();
   saveBagToLS();
   showMiniBag();
   showTotalSum();
-  removeDiscount();
 }
 
 //****************//
@@ -255,7 +262,7 @@ function removeDiscount(id) {
   if(!id) discounts = {};
 
   window.bestOffer.left.forEach( (item) => {
-    if(item === id) {
+    if(item === id && discounts.left) {
       let index = discounts.left.indexOf(id);
       if(index !== -1) {
         discounts.left.splice(index,1);
@@ -264,7 +271,7 @@ function removeDiscount(id) {
   });
 
   window.bestOffer.right.forEach( (item) => {
-    if(item === id) {
+    if(item === id && discounts.right) {
       let index = discounts.right.indexOf(id);
       if(index !== -1) {
         discounts.right.splice(index,1);
@@ -280,13 +287,13 @@ function plusDiscount(id) {
   if(!id) return;
 
   window.bestOffer.left.forEach( (item) => {
-    if(item === id) {
+    if(item === id && discounts.left) {
       discounts.left.push(id);
     }
   });
 
   window.bestOffer.right.forEach( (item) => {
-    if(item === id) {
+    if(item === id && discounts.right) {
       discounts.right.push(id);
     }
   });
