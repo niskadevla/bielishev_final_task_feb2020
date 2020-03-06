@@ -477,7 +477,7 @@ h3 {
 
   .header-bag__img {
     width: 1.5rem;
-    margin: 0 1rem; */
+    margin: 0 1rem;
   }
 
   .burger {
@@ -715,7 +715,7 @@ h3 {
                    "equal        main-total-price"
                    "add-to-bag   add-to-bag";
 	 -ms-grid-columns: auto auto;
-		-ms-grid-rows: (auto)[3];
+		-ms-grid-rows: auto auto auto;
 	}
 
   .equal {
@@ -855,8 +855,8 @@ h3 {
 		display: -ms-flex;
     grid-template: "slider-wrap  equal       main-total-price"
                    "add-to-bag   add-to-bag  add-to-bag";
-	  -ms-grid-columns: (auto)[3];
-	  -ms-grid-rows: (auto)[2];
+	  -ms-grid-columns: auto auto auto;
+	  -ms-grid-rows: auto auto;
 	}
 
   .equal {
@@ -1047,7 +1047,7 @@ h3 {
                    "legal-notice footer-social"
                    "footer-bottom footer-bottom";
 	  -ms-grid-columns: auto auto;
-	  -ms-grid-rows: (auto)[4];
+	  -ms-grid-rows: auto auto auto auto;
 	}
 
   .footer a:hover,
@@ -1217,7 +1217,7 @@ h3 {
                    "footer-left-up footer-social"
                    "footer-bottom legal-notice";
 	  -ms-grid-columns: auto auto;
-		-ms-grid-rows: (auto)[3];
+		-ms-grid-rows: auto auto auto;
   }
 
   .footer-right-down {
@@ -1278,7 +1278,7 @@ h3 {
                    "footer-left-up footer-social"
                    "footer-bottom legal-notice";
 	  -ms-grid-columns: 50% 50%;
-		-ms-grid-rows: (auto)[4];
+		-ms-grid-rows: auto auto auto auto;
     grid-template-columns: 50% 50%;
 
   }

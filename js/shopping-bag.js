@@ -1,140 +1,95 @@
 'use strict';
 
-window.addEventListener('load', () => {
+window.addEventListener('load', function () {
   showBag();
   showTotalSum();
 });
 
 //let bag from common.js (Global)
 
-let allOrder = document.getElementById('allOrder');
-let emptyBag = document.getElementById('emptyBag');
-let checkout = document.getElementById('checkout');
-let isPurchased = false;
-let orderSum = document.getElementById('orderSum');
-let discounts = {}; // discounts Object of Arrays
+var allOrder = document.getElementById('allOrder');
+var emptyBag = document.getElementById('emptyBag');
+var checkout = document.getElementById('checkout');
+var isPurchased = false;
+var orderSum = document.getElementById('orderSum');
+var discounts = {}; // discounts Object of Arrays
 
 /*Render goods on page*/
 function showBag() {
-  let html = '';
+  var html = '';
 
-  if(isPurchased && !bag.length) {
-    html = `
-      <p class="bag-empty">
-        Thank you for your purchase
-      </p>`;
-  } else if(!bag.length) {
+  if (isPurchased && !bag.length) {
+    html = '\n      <p class="bag-empty">\n        Thank you for your purchase\n      </p>';
+  } else if (!bag.length) {
     //Bag is empty
-    html = `
-      <p class="bag-empty">
-        Your shopping bag is empty.
-        <a href="./catalog.html"> Use Catalog to add new items</a>
-      </p>`;
+    html = '\n      <p class="bag-empty">\n        Your shopping bag is empty.\n        <a href="./catalog.html"> Use Catalog to add new items</a>\n      </p>';
   } else {
     //Rendering page
-    for(let i = 0; i < bag.length; i++) {
-      let item = {};
+    for (var _i = 0; _i < bag.length; _i++) {
+      var item = {};
 
-      for(let k = 0; k < window.catalog.length; k++) {
-        if(window.catalog[k].id === bag[i].id) {
+      for (var k = 0; k < window.catalog.length; k++) {
+        if (window.catalog[k].id === bag[_i].id) {
           item = window.catalog[k];
         }
       }
 
-      let neww = item.hasNew ? 'new' : '';
-      let price = item.discountedPrice || item.price;
+      var neww = item.hasNew ? 'new' : '';
+      var price = item.discountedPrice || item.price;
 
-      html += `
-      <div class="one-order-item">
-        <div class="one-order-thumb ${neww}">
-          <a href="./item.html" data-id="${item.id}">
-            <img src="${item.thumbnail}" alt="${item.title}">
-          </a>
-        </div>
-
-        <div class="one-order-right">
-          <div class="one-order-info">
-            <h6 class="one-order-info__title">${item.title}</h6>
-            <span class="one-order-info__price">&pound;${price}</span>
-          </div>
-
-          <div class="one-order-control">
-            <p class="one-order-control__color">
-              Color: <span>${item.colors[bag[i].color]}</span>
-            </p>
-            <p class="one-order-control__size">
-              Size: <span>${item.sizes[bag[i].size]}</span>
-            </p>
-            <div class="one-order-control__qty">
-              Quantity:
-              <span class="minus" data-index="${i}">_</span>
-              <input class="input-qty" type="text" value="${bag[i].count}" maxlength="3" >
-              <span class="plus" data-index="${i}">+</span>
-            </div>
-          </div>
-
-          <div class="remove-item" data-index="${i}">
-            <span>Remove item</span>
-          </div>
-        </div>
-      </div> `;
+      html += '\n      <div class="one-order-item">\n        <div class="one-order-thumb ' + neww + '">\n          <a href="./item.html" data-id="' + item.id + '">\n            <img src="' + item.thumbnail + '" alt="' + item.title + '">\n          </a>\n        </div>\n\n        <div class="one-order-right">\n          <div class="one-order-info">\n            <h6 class="one-order-info__title">' + item.title + '</h6>\n            <span class="one-order-info__price">&pound;' + price + '</span>\n          </div>\n\n          <div class="one-order-control">\n            <p class="one-order-control__color">\n              Color: <span>' + item.colors[bag[_i].color] + '</span>\n            </p>\n            <p class="one-order-control__size">\n              Size: <span>' + item.sizes[bag[_i].size] + '</span>\n            </p>\n            <div class="one-order-control__qty">\n              Quantity:\n              <span class="minus" data-index="' + _i + '">_</span>\n              <input class="input-qty" type="text" value="' + bag[_i].count + '" maxlength="3" >\n              <span class="plus" data-index="' + _i + '">+</span>\n            </div>\n          </div>\n\n          <div class="remove-item" data-index="' + _i + '">\n            <span>Remove item</span>\n          </div>\n        </div>\n      </div> ';
     }
   }
 
   allOrder.innerHTML = html;
 
-  let pluses = document.getElementsByClassName('plus');
-  for(let i = 0; i < pluses.length; i++) {
-    pluses[i].onclick = function() {
+  var pluses = document.getElementsByClassName('plus');
+  for (var _i2 = 0; _i2 < pluses.length; _i2++) {
+    pluses[_i2].onclick = function () {
       plusGoods.call(this);
-    }
+    };
   }
 
-  let minuses = document.getElementsByClassName('minus');
+  var minuses = document.getElementsByClassName('minus');
   for (var i = 0; i < minuses.length; i++) {
     minuses[i].onclick = minusGoods;
   }
 
-  let removes = document.getElementsByClassName('remove-item');
-  for (let i = 0; i < removes.length; i++) {
-    removes[i].onclick = removeGoods;
+  var removes = document.getElementsByClassName('remove-item');
+  for (var _i3 = 0; _i3 < removes.length; _i3++) {
+    removes[_i3].onclick = removeGoods;
   }
 }
 
 //Show bottom total sum
 function showTotalSum() {
-  let count = 0;
-  let totalPrice = 0;
+  var count = 0;
+  var totalPrice = 0;
 
-  bag.forEach( (obj) => {
+  bag.forEach(function (obj) {
     count += obj.count;
 
-    window.catalog.forEach( (el) => {
-      if(el.id === obj.id) {
-        let price = el.discountedPrice || el.price;
+    window.catalog.forEach(function (el) {
+      if (el.id === obj.id) {
+        var price = el.discountedPrice || el.price;
         totalPrice += parseFloat(price) * obj.count;
         totalPrice = +totalPrice.toFixed(2);
       }
     });
   });
 
-  let dis = `
-    <div class="order-sum__discount">
-        Applied discount: <span>${currency} ${window.bestOffer.discount.toFixed(2)}</span>
-    </div>`;
+  var dis = '\n    <div class="order-sum__discount">\n        Applied discount: <span>' + currency + ' ' + window.bestOffer.discount.toFixed(2) + '</span>\n    </div>';
 
-  let isDis = hasDiscount() ? dis : '';
-  let curr = count > 0 ? currency : '';
+  var isDis = hasDiscount() ? dis : '';
+  var curr = count > 0 ? currency : '';
 
-  let html = `
-    ${isDis}
-    <p>Total price: <strong>${curr} ${totalPrice}</strong></p>`;
+  var html = '\n    ' + isDis + '\n    <p>Total price: <strong>' + curr + ' ' + totalPrice + '</strong></p>';
   orderSum.innerHTML = html;
 }
 
 //Increase the quantity of goods
 function plusGoods() {
-  let index = this.dataset.index;
+  var index = this.dataset.index;
 
   plusDiscount(bag[index].id);
 
@@ -147,14 +102,14 @@ function plusGoods() {
 
 //Decrease the quantity of goods
 function minusGoods() {
-  let index = this.dataset.index;
+  var index = this.dataset.index;
 
   removeDiscount(bag[index].id);
 
-  if(bag[index].count > 1) {
+  if (bag[index].count > 1) {
     bag[index].count--;
   } else {
-     bag.splice(index,1);
+    bag.splice(index, 1);
   }
 
   showBag();
@@ -165,17 +120,16 @@ function minusGoods() {
 
 //Delete the good
 function removeGoods() {
-  let index = this.dataset.index;
+  var index = this.dataset.index;
 
   removeDiscount(bag[index].id);
 
-  bag.splice(index,1);
+  bag.splice(index, 1);
   showBag();
   saveBagToLS();
   showMiniBag();
   showTotalSum();
 }
-
 
 //Save bag to localStorage
 function saveBagToLS() {
@@ -183,7 +137,9 @@ function saveBagToLS() {
 }
 
 //Empty bag
-emptyBag.onclick = () => removeBag();
+emptyBag.onclick = function () {
+  return removeBag();
+};
 
 function removeBag() {
   bag = [];
@@ -195,10 +151,12 @@ function removeBag() {
 }
 
 //Checkout
-checkout.onclick = () => clearBag();
+checkout.onclick = function () {
+  return clearBag();
+};
 
 function clearBag() {
-  if(bag.length) {
+  if (bag.length) {
     isPurchased = true;
   }
   bag = [];
@@ -215,8 +173,8 @@ function clearBag() {
 
 //Check the discounts from the localStorage
 function checkDiscount() {
-  if( localStorage.getItem('discounts') ) {
-    discounts = JSON.parse( localStorage.getItem('discounts') );
+  if (localStorage.getItem('discounts')) {
+    discounts = JSON.parse(localStorage.getItem('discounts'));
   }
 }
 
@@ -227,32 +185,31 @@ function saveDiscountToLS() {
 function hasDiscount() {
   checkDiscount();
 
-  if(!discounts.left || !discounts.right) return;
+  if (!discounts.left || !discounts.right) return;
 
-  let isDiscount = (discounts.left.length > 0) &&
-               (discounts.right.length > 0) ? true : false;
+  var isDiscount = discounts.left.length > 0 && discounts.right.length > 0 ? true : false;
 
   return isDiscount;
 }
 
 function removeDiscount(id) {
   // if it has not id remove All
-  if(!id) discounts = {};
+  if (!id) discounts = {};
 
-  window.bestOffer.left.forEach( (item) => {
-    if(item === id && discounts.left) {
-      let index = discounts.left.indexOf(id);
-      if(index !== -1) {
-        discounts.left.splice(index,1);
+  window.bestOffer.left.forEach(function (item) {
+    if (item === id && discounts.left) {
+      var index = discounts.left.indexOf(id);
+      if (index !== -1) {
+        discounts.left.splice(index, 1);
       }
     }
   });
 
-  window.bestOffer.right.forEach( (item) => {
-    if(item === id && discounts.right) {
-      let index = discounts.right.indexOf(id);
-      if(index !== -1) {
-        discounts.right.splice(index,1);
+  window.bestOffer.right.forEach(function (item) {
+    if (item === id && discounts.right) {
+      var index = discounts.right.indexOf(id);
+      if (index !== -1) {
+        discounts.right.splice(index, 1);
       }
     }
   });
@@ -262,16 +219,16 @@ function removeDiscount(id) {
 
 function plusDiscount(id) {
   // if it has not id remove All
-  if(!id) return;
+  if (!id) return;
 
-  window.bestOffer.left.forEach( (item) => {
-    if(item === id && discounts.left) {
+  window.bestOffer.left.forEach(function (item) {
+    if (item === id && discounts.left) {
       discounts.left.push(id);
     }
   });
 
-  window.bestOffer.right.forEach( (item) => {
-    if(item === id && discounts.right) {
+  window.bestOffer.right.forEach(function (item) {
+    if (item === id && discounts.right) {
       discounts.right.push(id);
     }
   });

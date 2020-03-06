@@ -1,15 +1,17 @@
 'use strict';
 
-let goods = document.getElementById('goods');
-let data = sortByDateAdded( filterByWomen(window.catalog) );
-let leftSlider = document.getElementById('leftSlider');
-let rightSlider = document.getElementById('rightSlider');
-let totalPriceBO = document.getElementById('totalPriceBO');
-let btnToBag = document.getElementById('btnToBag');
+function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
+
+var goods = document.getElementById('goods');
+var data = sortByDateAdded(filterByWomen(window.catalog));
+var leftSlider = document.getElementById('leftSlider');
+var rightSlider = document.getElementById('rightSlider');
+var totalPriceBO = document.getElementById('totalPriceBO');
+var btnToBag = document.getElementById('btnToBag');
 
 //isObjectEmpty
 function isObjectEmpty(obj) {
-  for(var key in obj) {
+  for (var key in obj) {
     return;
   }
   return true;
@@ -21,42 +23,31 @@ function showPage() {
 
 //Filter goods By Women and Casual style
 function filterByWomen(arr) {
-  return arr.filter( (obj) => obj.category == 'women' && obj.fashion == 'Casual style' );
+  return arr.filter(function (obj) {
+    return obj.category == 'women' && obj.fashion == 'Casual style';
+  });
 }
 
 //Sort goods by newest
 function sortByDateAdded(arr) {
-  let newArr = [...arr];
-  newArr.sort( (a, b) => new Date(b.dateAdded) - new Date(a.dateAdded));
+  var newArr = [].concat(_toConsumableArray(arr));
+  newArr.sort(function (a, b) {
+    return new Date(b.dateAdded) - new Date(a.dateAdded);
+  });
   return newArr;
 }
 
 /*Render goods on page*/
 function renderGoods() {
-  const VisibleQty = 4;
-  let html = '';
+  var VisibleQty = 4;
+  var html = '';
 
   //Rendering all Arrivals
-  for(let i = 0; i < VisibleQty; i++) {
-    let neww = data[i].hasNew ? 'new' : '';
-    let price = data[i].discountedPrice ?
-      `<span class="old-price">${currency}${(data[i].price).toFixed(2)}</span>
-      <span class="card__price">${currency}${(data[i].discountedPrice).toFixed(2)}</span>` :
-      `<span class="card__price">${currency}${(data[i].price).toFixed(2)}</span>`;
+  for (var i = 0; i < VisibleQty; i++) {
+    var neww = data[i].hasNew ? 'new' : '';
+    var price = data[i].discountedPrice ? '<span class="old-price">' + currency + data[i].price.toFixed(2) + '</span>\n      <span class="card__price">' + currency + data[i].discountedPrice.toFixed(2) + '</span>' : '<span class="card__price">' + currency + data[i].price.toFixed(2) + '</span>';
 
-    html += `
-      <div class="card">
-        <div class="card-inner ${neww}">
-          <a href="./item.html" data-id="${data[i].id}">
-            <div class="card__img">
-              <img src="${data[i].thumbnail}" alt="${data[i].title}">
-            </div>
-            <h5 class="card__title">${data[i].title}</h5>
-            ${price}
-          </a>
-        </div>
-      </div>
-    `;
+    html += '\n      <div class="card">\n        <div class="card-inner ' + neww + '">\n          <a href="./item.html" data-id="' + data[i].id + '">\n            <div class="card__img">\n              <img src="' + data[i].thumbnail + '" alt="' + data[i].title + '">\n            </div>\n            <h5 class="card__title">' + data[i].title + '</h5>\n            ' + price + '\n          </a>\n        </div>\n      </div>\n    ';
   }
   goods.innerHTML = html;
 }
@@ -65,20 +56,21 @@ function renderGoods() {
 //Best offer
 //***********
 
-let lefts = sortByBestOffer(window.bestOffer.left);
-let rights = sortByBestOffer(window.bestOffer.right);
-let leftPrice;
-let rightPrice;
-let discountBO = window.bestOffer.discount;
+var lefts = sortByBestOffer(window.bestOffer.left);
+var rights = sortByBestOffer(window.bestOffer.right);
+var leftPrice = void 0;
+var rightPrice = void 0;
+var discountBO = window.bestOffer.discount;
 
 function sortByBestOffer(arr) {
-  let newArr = [];
-  arr.forEach( (str) => {
-    for(let i = 0; i < window.catalog.length; i++)
-      if(window.catalog[i].id === str) {
+  var newArr = [];
+  arr.forEach(function (str) {
+    for (var i = 0; i < window.catalog.length; i++) {
+      if (window.catalog[i].id === str) {
         newArr.push(window.catalog[i]);
         break;
       }
+    }
   });
 
   return newArr;
@@ -88,16 +80,16 @@ leftPrice = parseFloat(lefts[0].price);
 rightPrice = parseFloat(rights[0].price);
 
 function renderLeftSlider(e) {
-  let target = e.target;
-  let index = +target.dataset.index;
-  let direction = target.dataset.direction;
+  var target = e.target;
+  var index = +target.dataset.index;
+  var direction = target.dataset.direction;
 
-  if(!direction) return;
+  if (!direction) return;
 
-  let leftQty = window.bestOffer.left.length;
+  var leftQty = window.bestOffer.left.length;
 
-  let newIndexUp;
-  let newIndexDown;
+  var newIndexUp = void 0;
+  var newIndexDown = void 0;
 
   leftPrice = parseFloat(lefts[index].price);
 
@@ -105,44 +97,35 @@ function renderLeftSlider(e) {
 
   btnToBag.dataset.id_1 = lefts[index].id;
 
-  if(direction === 'up') {
+  if (direction === 'up') {
     newIndexUp = index - 1;
     newIndexDown = index - 1;
   }
 
-  if(direction === 'down') {
+  if (direction === 'down') {
     newIndexUp = index + 1;
     newIndexDown = index + 1;
   }
 
-  if(newIndexUp > leftQty - 1) {
+  if (newIndexUp > leftQty - 1) {
     newIndexUp = 0;
   }
 
-  if(newIndexDown > leftQty - 1) {
+  if (newIndexDown > leftQty - 1) {
     newIndexDown = 0;
   }
 
-  if(newIndexUp < 0) {
+  if (newIndexUp < 0) {
     newIndexUp = leftQty - 1;
   }
 
-  if(newIndexDown < 0) {
+  if (newIndexDown < 0) {
     newIndexDown = leftQty - 1;
   }
 
-  let neww = lefts[index].hasNew ? 'new' : '';
+  var neww = lefts[index].hasNew ? 'new' : '';
 
-  let html = `
-    <div class="slider__card ${neww}">
-      <a href="./item.html" data-id="${lefts[index].id}">
-        <img src="${lefts[index].thumbnail}" alt="${lefts[index].title}">
-        <h5 class="card__title">${lefts[index].title}</h5>
-        <span class="card__price">${currency}${lefts[index].price}</span>
-      </a>
-    </div>
-    <a class="slider-control slider-control_up" data-index="${newIndexUp}" data-direction="up"></a>
-    <a class="slider-control slider-control_down" data-index="${newIndexDown}" data-direction="down"></a>`;
+  var html = '\n    <div class="slider__card ' + neww + '">\n      <a href="./item.html" data-id="' + lefts[index].id + '">\n        <img src="' + lefts[index].thumbnail + '" alt="' + lefts[index].title + '">\n        <h5 class="card__title">' + lefts[index].title + '</h5>\n        <span class="card__price">' + currency + lefts[index].price + '</span>\n      </a>\n    </div>\n    <a class="slider-control slider-control_up" data-index="' + newIndexUp + '" data-direction="up"></a>\n    <a class="slider-control slider-control_down" data-index="' + newIndexDown + '" data-direction="down"></a>';
 
   leftSlider.innerHTML = html;
 }
@@ -150,100 +133,84 @@ function renderLeftSlider(e) {
 leftSlider.addEventListener('click', renderLeftSlider);
 
 function renderRightSlider(e) {
-  let target = e.target;
-  let index = +target.dataset.index;
-  let direction = target.dataset.direction;
+  var target = e.target;
+  var index = +target.dataset.index;
+  var direction = target.dataset.direction;
 
-  if(!direction) return;
+  if (!direction) return;
 
-  let rightQty = window.bestOffer.right.length;
-  let newIndexUp;
-  let newIndexDown;
+  var rightQty = window.bestOffer.right.length;
+  var newIndexUp = void 0;
+  var newIndexDown = void 0;
 
   rightPrice = parseFloat(rights[index].price);
 
   renderPrice();
   btnToBag.dataset.id_2 = rights[index].id;
 
-  if(direction === 'up') {
+  if (direction === 'up') {
     newIndexUp = index - 1;
     newIndexDown = index - 1;
   }
 
-  if(direction === 'down') {
+  if (direction === 'down') {
     newIndexUp = index + 1;
     newIndexDown = index + 1;
   }
 
-  if(newIndexUp > rightQty - 1) {
+  if (newIndexUp > rightQty - 1) {
     newIndexUp = 0;
   }
 
-  if(newIndexDown > rightQty - 1) {
+  if (newIndexDown > rightQty - 1) {
     newIndexDown = 0;
   }
 
-  if(newIndexUp < 0) {
+  if (newIndexUp < 0) {
     newIndexUp = rightQty - 1;
   }
 
-  if(newIndexDown < 0) {
+  if (newIndexDown < 0) {
     newIndexDown = rightQty - 1;
   }
 
-  let neww = rights[index].hasNew ? 'new' : '';
+  var neww = rights[index].hasNew ? 'new' : '';
 
-  let html = `
-    <div class="slider__card ${neww}">
-      <a href="./item.html" data-id="${rights[index].id}">
-        <img src="${rights[index].thumbnail}" alt="${rights[index].title}">
-        <h5 class="card__title">${rights[index].title}</h5>
-        <span class="card__price">${currency}${rights[index].price}</span>
-      </a>
-    </div>
-    <a class="slider-control slider-control_up" data-index="${newIndexUp}" data-direction="up"></a>
-    <a class="slider-control slider-control_down" data-index="${newIndexDown}" data-direction="down"></a>`;
+  var html = '\n    <div class="slider__card ' + neww + '">\n      <a href="./item.html" data-id="' + rights[index].id + '">\n        <img src="' + rights[index].thumbnail + '" alt="' + rights[index].title + '">\n        <h5 class="card__title">' + rights[index].title + '</h5>\n        <span class="card__price">' + currency + rights[index].price + '</span>\n      </a>\n    </div>\n    <a class="slider-control slider-control_up" data-index="' + newIndexUp + '" data-direction="up"></a>\n    <a class="slider-control slider-control_down" data-index="' + newIndexDown + '" data-direction="down"></a>';
 
-rightSlider.innerHTML = html;
+  rightSlider.innerHTML = html;
 }
 
 rightSlider.addEventListener('click', renderRightSlider);
 
 function renderPrice() {
-  let price = leftPrice + rightPrice;
-  let newPrice = price - discountBO;
-  let html = `
-    <div class="main-total-price__old-price old-price">
-      <span>&pound;</span><span>${price}</span>
-    </div>
-
-    <div class="main-total-price__new-price">
-      <span>${currency}</span>${newPrice}<span></span>
-    </div>`;
+  var price = leftPrice + rightPrice;
+  var newPrice = price - discountBO;
+  var html = '\n    <div class="main-total-price__old-price old-price">\n      <span>&pound;</span><span>' + price + '</span>\n    </div>\n\n    <div class="main-total-price__new-price">\n      <span>' + currency + '</span>' + newPrice + '<span></span>\n    </div>';
   totalPriceBO.innerHTML = html;
 }
 
 /**********/
 //Add to bag
 /**********/
-let discounts = {
+var discounts = {
   left: [],
   right: []
 };
 
 //Check the discounts from the localStorage
 function checkDiscount() {
-  if( !isObjectEmpty( JSON.parse(localStorage.getItem('discounts') )) ) {
-    discounts = JSON.parse( localStorage.getItem('discounts') );
+  if (!isObjectEmpty(JSON.parse(localStorage.getItem('discounts')))) {
+    discounts = JSON.parse(localStorage.getItem('discounts'));
   }
 }
 
-btnToBag.onclick = function() {
+btnToBag.onclick = function () {
   addToBag.call(this, this.dataset.id_1);
   addToBag.call(this, this.dataset.id_2);
 
-  let leftId = this.dataset.id_1;
-  let rightId = this.dataset.id_2;
+  var leftId = this.dataset.id_1;
+  var rightId = this.dataset.id_2;
 
   checkDiscount();
 
@@ -251,32 +218,34 @@ btnToBag.onclick = function() {
   discounts.right.push(rightId);
 
   localStorage.setItem('discounts', JSON.stringify(discounts));
-}
+};
 
 //Add the good to bag
 function addToBag(id) {
   id = id || this.dataset.id;
-  let color = this.dataset.color;
-  let size = this.dataset.size;
+  var color = this.dataset.color;
+  var size = this.dataset.size;
 
-  let obj = {
+  var obj = {
     id: id,
     color: color,
     size: size
   };
 
-  if(!bag.length) {
+  if (!bag.length) {
     obj.count = 1;
     bag.push(obj);
   } else {
     /*Is there product with the same property*/
-    let isExist = bag.some( (el) => (el.id === id && el.color === color && el.size === size) );
-    if(!isExist) {
+    var isExist = bag.some(function (el) {
+      return el.id === id && el.color === color && el.size === size;
+    });
+    if (!isExist) {
       obj.count = 1;
       bag.push(obj);
     } else {
-      bag.forEach( (el) => {
-        if(el.id === id && el.color === color && el.size === size) {
+      bag.forEach(function (el) {
+        if (el.id === id && el.color === color && el.size === size) {
           el.count++;
         }
       });
