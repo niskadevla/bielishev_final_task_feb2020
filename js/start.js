@@ -62,27 +62,40 @@ function renderGoods() {
 //Best offer
 //***********
 
-let lefts = [];
-let rights = [];
+let lefts = sortByBestOffer(window.bestOffer.left);
+let rights = sortByBestOffer(window.bestOffer.right);
 let leftPrice;
 let rightPrice;
 let discountBO = window.bestOffer.discount;
 
-window.bestOffer.left.forEach( (str) => {
-  for(let i = 0; i < window.catalog.length; i++)
-    if(window.catalog[i].id === str) {
-      lefts.push(window.catalog[i]);
-      break;
-    }
-});
+function sortByBestOffer(arr) {
+  let newArr = [];
+  arr.forEach( (str) => {
+    for(let i = 0; i < window.catalog.length; i++)
+      if(window.catalog[i].id === str) {
+        newArr.push(window.catalog[i]);
+        break;
+      }
+  });
 
-window.bestOffer.right.forEach( (str) => {
-  for(let i = 0; i < window.catalog.length; i++)
-    if(window.catalog[i].id === str) {
-      rights.push(window.catalog[i]);
-      break;
-    }
-});
+  return newArr;
+}
+
+// window.bestOffer.left.forEach( (str) => {
+//   for(let i = 0; i < window.catalog.length; i++)
+//     if(window.catalog[i].id === str) {
+//       lefts.push(window.catalog[i]);
+//       break;
+//     }
+// });
+
+// window.bestOffer.right.forEach( (str) => {
+//   for(let i = 0; i < window.catalog.length; i++)
+//     if(window.catalog[i].id === str) {
+//       rights.push(window.catalog[i]);
+//       break;
+//     }
+// });
 
 leftPrice = parseFloat(lefts[0].price);
 rightPrice = parseFloat(rights[0].price);
@@ -234,46 +247,42 @@ function renderPrice() {
 /**********/
 //Add to bag
 /**********/
-btnToBag.onclick = addToBag;
+let discounts = {
+  left: [],
+  right: []
+};
+
+//Check the discounts from the localStorage
+function checkDiscount() {
+  if( localStorage.getItem('discounts') ) {
+    discounts = JSON.parse( localStorage.getItem('discounts') );
+  }
+}
+
+btnToBag.onclick = function(e) {
+  addToBag.call(this, this.dataset.id_1);
+  addToBag.call(this, this.dataset.id_2);
+
+  let leftId = this.dataset.id_1;
+  let rightId = this.dataset.id_2;
+  // [this.dataset.id_1, this.dataset.id_2];
+
+  checkDiscount();
+
+  discounts.left.push(leftId);
+  discounts.right.push(rightId);
+
+  localStorage.setItem('discounts', JSON.stringify(discounts));
+}
 
 
 //Add the good to bag
-function addToBag() {
-  let id = this.dataset.id_1;
+function addToBag(id) {
+  id = id || this.dataset.id;
   let color = this.dataset.color;
   let size = this.dataset.size;
 
   let obj = {
-    id: id,
-    color: color,
-    size: size
-  };
-
-  if(!bag.length) {
-    obj.count = 1;
-    bag.push(obj);
-  } else {
-    /*Is there product with the same property*/
-    let isExist = bag.some( (el) => (el.id === id && el.color === color && el.size === size) );
-    if(!isExist) {
-      obj.count = 1;
-      bag.push(obj);
-    } else {
-      bag.forEach( (el) => {
-        if(el.id === id && el.color === color && el.size === size) {
-          el.count++;
-        }
-      });
-    }
-  }
-
-  //***
-
-  id = this.dataset.id_2;
-  color = this.dataset.color;
-  size = this.dataset.size;
-
-  obj = {
     id: id,
     color: color,
     size: size

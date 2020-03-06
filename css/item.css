@@ -62,9 +62,13 @@
     margin-bottom: 1.5rem;
   }
 
-  .item-info__price {
+  .item-info__price,
+  .item-info__price span {
     display: inline-block;
     font-size: 1.8rem;
+  }
+
+  .item-info__price {    
     padding-bottom: 2rem;
   }
 
@@ -177,8 +181,12 @@
   }
 
   .item-info__price {
-    font-size: 1.75rem;
     padding-left:  1.5rem;
+  }
+
+  .item-info__price,
+  .item-info__price span {
+    font-size: 1.75rem;
   }
 
   .item-info__des {

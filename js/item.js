@@ -2,6 +2,11 @@
 
 let itemWrap = document.getElementById('itemWrap');
 
+//Empty viewed from bag
+// window.addEventListener('unload', function() {
+//   localStorage.removeItem('viewed');
+// });
+
 //Check the viewed goods
 function checkViewed() {
   if( localStorage.getItem('viewed') ) {
@@ -31,12 +36,21 @@ function showViewdItem() {
 
     <div id="thumbs" class="thumbs-preview">`;
       viewedItem.preview.forEach( (src, i) => {
-        let first = i === 0 ? 'color-up' : '';
+        let colorUp = i === 0 ? 'color-up' : '';
         html += `
-          <div class="thumbs-preview__img ${first}">
+          <div class="thumbs-preview__img ${colorUp}">
             <img src="${src}" alt="${viewedItem.title}">
           </div>`;
       });
+
+      let price = viewedItem.discountedPrice ?
+        `<span class="old-price">${currency}${(viewedItem.price).toFixed(2)}</span>
+        <span class="card__price">${currency}${(viewedItem.discountedPrice).toFixed(2)}</span>` :
+        `<span class="card__price">${currency}${(viewedItem.price).toFixed(2)}</span>`;
+      //${currency}${viewedItem.price}
+      // <span class="item-info__price">
+      //   ${price}
+      // </span>
   html += `
     </div>
   </div>
@@ -44,7 +58,7 @@ function showViewdItem() {
   <div class="item-info">
     <h2 class="item-info__title">${viewedItem.title}</h2>
     <span class="item-info__price">
-      ${currency}${viewedItem.price}
+      ${price}
     </span>
     <p class="item-info__des slogan">
       Featuring fine Italian wool, this elegant suit has

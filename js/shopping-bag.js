@@ -17,6 +17,7 @@ let emptyBag = document.getElementById('emptyBag');
 let checkout = document.getElementById('checkout');
 let isPurchased = false;
 let orderSum = document.getElementById('orderSum');
+let discounts = {}; // discounts Object of Arrays
 
 /*Render goods on page*/
 function showBag() {
@@ -132,8 +133,15 @@ function showTotalSum() {
   });
 
   // currency = count != 0 ? currency : '';
+  let dis = `
+    <div class="order-sum__discount">
+        Applied discount: <span>${currency} ${window.bestOffer.discount.toFixed(2)}</span>
+    </div>`;
+
+  let isDis = hasDiscount() ? dis : '';
 
   let html = `
+    ${isDis}
     <p>Total price: <strong>${currency} ${totalPrice}</strong></p>`;
   orderSum.innerHTML = html;
 }
@@ -141,6 +149,9 @@ function showTotalSum() {
 //Increase the quantity of goods
 function plusGoods() {
   let index = this.dataset.index;
+
+  plusDiscount(bag[index].id);
+
   bag[index].count++;
   showBag();
   saveBagToLS();
@@ -151,11 +162,15 @@ function plusGoods() {
 //Decrease the quantity of goods
 function minusGoods() {
   let index = this.dataset.index;
+
+  removeDiscount(bag[index].id);
+
   if(bag[index].count > 1) {
     bag[index].count--;
   } else {
      bag.splice(index,1);
   }
+
   showBag();
   saveBagToLS();
   showMiniBag();
@@ -165,6 +180,9 @@ function minusGoods() {
 //Delete the good
 function removeGoods() {
   let index = this.dataset.index;
+
+  removeDiscount(bag[index].id);
+
   bag.splice(index,1);
   showBag();
   saveBagToLS();
@@ -187,6 +205,7 @@ function removeBag() {
   saveBagToLS();
   showMiniBag();
   showTotalSum();
+  removeDiscount();
 }
 
 //Checkout
@@ -201,4 +220,76 @@ function clearBag() {
   saveBagToLS();
   showMiniBag();
   showTotalSum();
+  removeDiscount();
+}
+
+//****************//
+// Check discount //
+//****************//
+
+
+//Check the discounts from the localStorage
+function checkDiscount() {
+  if( localStorage.getItem('discounts') ) {
+    discounts = JSON.parse( localStorage.getItem('discounts') );
+  }
+}
+
+function saveDiscountToLS() {
+  localStorage.setItem('discounts', JSON.stringify(discounts));
+}
+
+function hasDiscount() {
+  checkDiscount();
+
+  if(!discounts.left || !discounts.right) return;
+
+  let isDiscount = (discounts.left.length > 0) &&
+               (discounts.right.length > 0) ? true : false;
+
+  return isDiscount;
+}
+
+function removeDiscount(id) {
+  // if it has not id remove All
+  if(!id) discounts = {};
+
+  window.bestOffer.left.forEach( (item) => {
+    if(item === id) {
+      let index = discounts.left.indexOf(id);
+      if(index !== -1) {
+        discounts.left.splice(index,1);
+      }
+    }
+  });
+
+  window.bestOffer.right.forEach( (item) => {
+    if(item === id) {
+      let index = discounts.right.indexOf(id);
+      if(index !== -1) {
+        discounts.right.splice(index,1);
+      }
+    }
+  });
+
+  saveDiscountToLS();
+}
+
+function plusDiscount(id) {
+  // if it has not id remove All
+  if(!id) return;
+
+  window.bestOffer.left.forEach( (item) => {
+    if(item === id) {
+      discounts.left.push(id);
+    }
+  });
+
+  window.bestOffer.right.forEach( (item) => {
+    if(item === id) {
+      discounts.right.push(id);
+    }
+  });
+
+  saveDiscountToLS();
 }
