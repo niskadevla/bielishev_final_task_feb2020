@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Template / catalog</title>
+  <!-- <link href="https://fonts.googleapis.com/css?family=Open+Sans:700|Roboto:400,500,700&display=swap" rel="stylesheet"> -->
+  <link rel="stylesheet" href="./css/common.css">
+  <link rel="stylesheet" href="./css/banner-bottom.css">
+  <link rel="stylesheet" href="./css/catalog.css">
+</head>
+<body>
+  <div class="page-wrap">
+    <header class="header">
+      <div class="container">
+        <div class="header-top">
+          <div class="logo logo_mobile">
+            <a href="./start.html">TL</a>
+          </div>
+          <div class="logo logo_desktop">
+            <a href="./start.html">Template</a>
+          </div>
+
+          <div class="header__email">
+            <a href="mailto:">E-mail sing up</a>
+          </div>
+
+          <div class="header-bag">
+            <a class="header-bag__link" href="shopping-bag.html">
+              <div class="header-bag__img">
+                <img src="img/shopping-bag.svg" alt="shopping-bag icon">
+              </div>
+              <div id="miniBag" class="header-bag__inner">
+                Bag <span>&pound;(10)</span>
+              </div>
+            </a>
+          </div>
+
+          <div id="burger" class="burger">
+            <div></div>
+          </div>
+        </div>
+
+        <div id="headerBottom" class="header-bottom">
+          <div class="header-bottom__wrap">
+            <nav class="menu">
+              <ul class="menu__list">
+                <li class="menu__item">
+                  <a class="menu__link active" href="./catalog.html">Woman</a>
+                </li>
+                <li class="menu__item">
+                  <a class="menu__link" href="./catalog.html">Men</a>
+                </li>
+                <li class="menu__item">
+                  <a class="menu__link" href="./catalog.html">Handbags</a>
+                </li>
+                <li class="menu__item">
+                  <a class="menu__link" href="./catalog.html">Accessories</a>
+                </li>
+                <li class="menu__item">
+                  <a class="menu__link" href="./catalog.html">Sale</a>
+                </li>
+                <li class="menu__item">
+                  <a class="menu__link" href="./catalog.html">New Arrivals</a>
+                </li>
+                <li class="menu__item">
+                  <a class="menu__link" href="./catalog.html">Clearance</a>
+                </li>
+                <li class="menu__item">
+                  <a class="menu__link" href="./catalog.html">Store Locator</a>
+                </li>
+              </ul>
+            </nav>
+
+            <div class="search">
+              <div class="search__wrap">
+                <input type="search" value="" placeholder="Style Name">
+                <!-- <span>&#128269;</span> -->
+                <img src="img/search.svg" alt="search">
+              </div>
+            </div>
+          </div>
+        </div> <!--header-bottom-->
+      </div>
+    </header>
+    <div class="line-separator"></div>
+
+    <div class="container">
+      <div class="filter-wrap">
+        <div id="dropDown" class="filter-mobile">
+          <nav id="filterNav" class="filter-nav">
+            <ul>
+             <li><a class="filter-nav__link selected">Casual style,</a></li>
+             <li><a class="filter-nav__link">Product type,</a></li>
+             <li><a class="filter-nav__link">Color,</a></li>
+             <li><a class="filter-nav__link">Brand,</a></li>
+             <li><a class="filter-nav__link">Size,</a></li>
+             <li><a class="filter-nav__link">Price range</a></li>
+            </ul>
+
+            <div id="switcher" class="switcher">
+            </div>
+          </nav>
+        </div> <!--filter-mobile-->
+
+        <nav id="filterMenu" class="filter-menu">
+              <ul id="menuList" class="filter-menu-main">
+                <!-- <li class="filter-menu-main__item selected">
+                  <div class="filter-menu__head ">
+                    <h4>Fashion</h4>
+                    <span>Casual style</span>
+                  </div>
+                  <div class="switcher"></div>
+                  <div class="filter-submenu">
+                    <ul>
+                      <li><a href="#">Not selected</a></li>
+                      <li><a href="#">Nail the 90s</a></li>
+                      <li class="active"><a href="#">Casual style</a></li>
+                      <li><a href="#">New Look</a></li>
+                      <li><a href="#">Sport</a></li>
+                      <li><a href="#">Vintage</a></li>
+                      <li><a href="#">Сlassical style</a></li>
+                    </ul>
+                  </div>
+                </li>
+                <li class="filter-menu-main__item">
+                  <div class="filter-menu__head">
+                    <h4>Product type</h4>
+                  </div>
+                  <div class="switcher"></div>
+                  <div class="filter-submenu">
+                    <ul>
+                      <li class="active"><a href="#">Not selected</a></li>
+                      <li><a href="#">Coats & Jackets</a></li>
+                      <li><a href="#">Dresses</a></li>
+                      <li><a href="#">Jersey Tops</a></li>
+                    </ul>
+                  </div>
+                </li>
+                <li class="filter-menu-main__item">
+                  <div class="filter-menu__head">
+                    <h4>Color</h4>
+                  </div>
+                  <div class="switcher"></div>
+                  <div class="filter-submenu">
+                    <ul>
+                      <li class="active"><a href="#">Not selected</a></li>
+                      <li><a href="#">Black</a></li>
+                      <li><a href="#">Blue</a></li>
+                      <li><a href="#">Red</a></li>
+                      <li><a href="#">Green</a></li>
+                      <li><a href="#">Golden</a></li>
+                    </ul>
+                  </div>
+                </li>
+                <li class="filter-menu-main__item">
+                  <div class="filter-menu__head">
+                    <h4>Brand</h4>
+                  </div>
+                  <div class="switcher"></div>
+                  <div class="filter-submenu">
+                    <ul>
+                      <li class="active"><a href="#">Not selected</a></li>
+                      <li><a href="#">Chi Chi London</a></li>
+                      <li><a href="#">Antipodium</a></li>
+                      <li><a href="#">Adidas</a></li>
+                      <li><a href="#">New Balance</a></li>
+                      <li><a href="#">River Island</a></li>
+                    </ul>
+                  </div>
+                </li>
+                <li class="filter-menu-main__item">
+                  <div class="filter-menu__head">
+                    <h4>Size</h4>
+                  </div>
+                  <div class="switcher"></div>
+                  <div class="filter-submenu">
+                    <ul>
+                      <li class="active"><a href="#">Not selected</a></li>
+                      <li><a href="#">UK 2</a></li>
+                      <li><a href="#">UK 18</a></li>
+                      <li><a href="#">UK 18L</a></li>
+                      <li><a href="#">UK 20</a></li>
+                      <li><a href="#">UK 20L</a></li>
+                    </ul>
+                  </div>
+                </li>
+                <li class="filter-menu-main__item">
+                  <div class="filter-menu__head">
+                    <h4>Price range</h4>
+                  </div>
+                  <div class="switcher"></div>
+                  <div class="filter-submenu">
+                    <ul>
+                      <li class="active"><a href="#">Not selected</a></li>
+                      <li><a href="#">To £99</a></li>
+                      <li><a href="#">£100-£299</a></li>
+                      <li><a href="#">From £300</a></li>
+                    </ul>
+                  </div>
+                </li> -->
+              </ul>
+        </nav>
+      </div> <!--filter-wrap-->
+    </div>
+    <div class="line-separator"></div>
+
+
+    <main class="main">
+      <div class="container">
+        <section class="section">
+          <div class="product-list">
+            <!-- <h2 class="product-list__title">New arrivals</h2> -->
+
+            <div id="goods" class="cards-wrap">
+              <!-- <div class="card">
+                <div class="card-inner new">
+                  <a href="./item.html">
+                    <div class="card__img">
+                      <img src="img/only-skinny-jeans.png" alt="only-skinny-jeans">
+                    </div>
+                    <h5 class="card__title">Only skinny jeans</h5>
+                    <span class="old-price">&pound;55.50</span>
+                    <span class="card__price">&pound;65.50</span>
+                  </a>
+                </div>
+              </div>
+
+              <div class="card">
+                 <div class="card-inner">
+                   <a href="./item.html">
+                     <div class="card__img">
+                       <img src="img/only-skinny-jeans.png" alt="only-skinny-jeans">
+                     </div>
+                     <h5 class="card__title">Only skinny jeans</h5>
+                     <span class="card__price">&pound;65.50</span>
+                   </a>
+                 </div>
+              </div>
+
+              <div class="card">
+                 <div class="card-inner">
+                   <a href="./item.html">
+                     <div class="card__img">
+                       <img src="img/only-skinny-jeans.png" alt="only-skinny-jeans">
+                     </div>
+                     <h5 class="card__title">Only skinny jeans</h5>
+                     <span class="card__price">&pound;65.50</span>
+                   </a>
+                 </div>
+              </div>
+
+              <div class="card">
+                 <div class="card-inner">
+                   <a href="./item.html">
+                     <div class="card__img">
+                       <img src="img/only-skinny-jeans.png" alt="only-skinny-jeans">
+                     </div>
+                     <h5 class="card__title">Only skinny jeans</h5>
+                     <span class="card__price">&pound;65.50</span>
+                   </a>
+                 </div>
+              </div> -->
+
+              <!-- <div class="banner-catalog">
+                <h3 class="banner-catalog__title">
+                  Last weekend <strong class="mark">extra 50%</strong>
+                  off on all reduced boots and shoulder bags
+                </h3>
+                <p class="slogan banner-catalog__des">
+                  This offer is valid in-store and online. Prices displayed reflect this additional discount. This offer ends at 11:59 GMT on March 1st 2019
+                </p>
+              </div> -->
+            </div> <!--*End* cards-wrap-->
+            <a id="showMore" class="btn show-more" href="./catalog.html">
+              <span>Show more</span>
+            </a>
+          </div> <!--*End* product-list-->
+        </section>
+      </div>
+    </main>
+    <div class="line-separator"></div>
+
+
+    <div class="banner">
+      <div class="banner-inner banner-inner_left">
+        <div class="banner-item">
+          <a href="./item.html">
+            <div class="banner-inner__text">
+              <h3 class="banner-inner__title">Adidas Blue</h3>
+              <p class="banner-inner__des">For men</p>
+            </div>
+            <div class="banner-inner__img">
+              <img src="./img/adidas-blue.png" alt="adidas-blue">
+            </div>
+          </a>
+        </div>
+      </div>
+
+      <div class="banner-inner banner-inner_right">
+        <div class="banner-item color-up">
+          <a href="./catalog.html">
+            <div class="banner-inner__text">
+              <h3 class="banner-inner__title">Repair Patches</h3>
+              <p class="banner-inner__des font-normal">&pound;150.50</p>
+            </div>
+            <div class="banner-inner__img">
+              <img src="./img/repair-patches.png" alt="repair-patches">
+            </div>
+          </a>
+        </div>
+
+        <div class="banner-item">
+          <a href="./catalog.html">
+            <div class="banner-inner__text">
+              <h3 class="banner-inner__title mark">Sale</h3>
+              <p class="banner-inner__des font-gray">-70%</p>
+            </div>
+            <div class="banner-inner__img">
+              <img src="./img/sale.png" alt="sale">
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="line-separator"></div>
+
+
+    <!-- <div class="advertising-wrap">
+      <div class="ad">
+        <div class="ad-left">
+          <div class="ad-item">
+            <a href="#">
+              <div class="ad__img">
+                <img src="./img/adidas-blue.png" alt="adidas-blue">
+              </div>
+              <div class="ad__text">
+                <h3>Adidas Blue</h3>
+                <p>For men</p>
+              </div>
+            </a>
+          </div>
+        </div>
+
+        <div class="ad-right">
+            <div class="ad-item">
+              <a href="#">
+                <div class="ad__img">
+                  <img src="./img/repair-patches.png" alt="repair-patches">
+                </div>
+                <div class="ad__text">
+                  <h3>Repair Patches</h3>
+                  <p>&pound; 150.50</p>
+                </div>
+              </a>
+            </div>
+
+            <div class="ad-item">
+              <a href="#">
+                <div class="ad__img">
+                  <img src=".img/sale.png" alt="sale">
+                </div>
+                <div class="ad__text">
+                  <h3 class="mark">Sale</h3>
+                  <p>-70%</p>
+                </div>
+              </a>
+            </div>
+        </div>
+      </div>
+    </div> -->
+
+    <footer class="footer">
+      <div class="footer-left-up">
+        <div class="footer-inner">
+          <div class="links-list">
+            <h6>Quick Links</h6>
+            <ul>
+              <li><a href="#">Store locator</a></li>
+              <li><a href="#">Gift cards</a></li>
+              <li><a href="#">Size guide</a></li>
+              <li><a href="#">About us</a></li>
+              <li><a href="#">Support</a></li>
+            </ul>
+          </div>
+
+          <div class="links-list">
+            <h6>Customer Care</h6>
+            <ul>
+              <li><a href="#">Customer service</a></li>
+              <li><a href="#">Track my order</a></li>
+              <li><a href="#">Return policy</a></li>
+              <li><a href="#">Shipping & delivery</a></li>
+              <li><a href="#">Contact us</a></li>
+              <li><a href="#">Careers</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="line-separator"></div>
+      </div>
+
+
+      <div class="footer-right-down">
+       <div class="footer-inner">
+         <div class="links-list">
+           <h6>Questions</h6>
+           <ul>
+             <li>
+               <a href="#">
+                 <img src="img/twitter.svg" alt="twitter">
+                 Tweet us <b>@template</b>
+               </a>
+             </li>
+           </ul>
+         </div>
+
+         <div class="links-list">
+           <h6>Order by phone</h6>
+           <ul>
+             <li><a href="tel:88004094712">8-800-409-47-12</a></li>
+           </ul>
+         </div>
+       </div>
+       <div class="line-separator"></div>
+      </div>
+
+      <div class="slogan footer-slogan">
+        We have our own delivery service which operates in
+        23 major European cities. Delivery time - 3-5 days.
+      </div>
+
+      <div class="legal-notice">
+        <ul>
+          <li><a href="#">Legal notice</a></li>
+          <li><a href="#">Privacy policy</a></li>
+          <li><a href="#">Site map</a></li>
+        </ul>
+        <div class="line-separator"></div>
+      </div>
+
+      <div class="footer-social">
+        <a href="#"><img src="img/facebook.svg" alt="facebook"></a>
+        <a href="#"><img src="img/twitter-active.svg" alt="twitter-active"></a>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy;2010-<span>2015</span>, The Template Group Inc.</p>
+        <div class="share">
+          <span>Share</span>
+          <a class="share__link" href="#">1 437</a>
+        </div>
+      </div>
+    </footer>
+
+  </div> <!--page wrap-->
+
+  <script src="./data/catalog.js"></script>
+  <script src="./js/common.js"></script>
+  <script src="./js/catalog-page.js"></script>
+</body>
+</html>

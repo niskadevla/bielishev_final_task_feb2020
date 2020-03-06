@@ -1,0 +1,79 @@
+/************/
+/* Advertising */
+/************/
+@media (min-width: 375px) {
+  .banner,
+  .banner a {
+    color: #fff;
+  }
+
+  .banner-inner__title {
+    font-size: 1.8rem;
+  }
+
+  .banner-inner__des {
+    font-size: 1.4rem;
+    color: #fff;
+  }
+
+  .banner-inner__img img {
+    width: 100%;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+  }
+
+  .banner-inner_right {
+    background-color: #fff;
+  }
+
+  .banner-inner_right .banner-inner__text {
+    top: auto;
+    bottom: 10%;
+    right: 0;
+    left: 0;
+    margin: 0 auto;
+  }
+}
+
+@media (min-width: 768px) {
+  .banner-inner_left {
+    -webkit-box-flex: 0 0 75%;
+    -ms-flex: 0 0 75%;
+    flex: 0 0 75%;
+  }
+
+  .banner-inner_right {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: -o-flexbox;
+    display: flex;
+    -ms-flex-flow: row nowrap;
+    flex-flow: row nowrap;
+  }
+
+  .banner-inner_right .banner-item:last-child {
+    display: none;
+  }
+
+}
+
+@media (min-width: 1024px) {
+  .banner-inner_left {
+    -webkit-box-flex: 0 0 50%;
+    -ms-flex: 0 0 50%;
+    flex: 0 0 50%;
+  }
+
+  .banner-inner_right .banner-item {
+    -webkit-box-flex: 50%;
+    -ms-flex: 50%;
+    flex: 50%;
+  }
+
+  .banner-inner_right .banner-item:last-child {
+    display: block;
+  }
+}

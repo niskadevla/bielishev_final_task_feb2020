@@ -1,0 +1,19 @@
+/****************/
+/* Breadcrumbs */
+/**************/
+.breadcrumb-item a,
+.breadcrumb-item h2 {
+  display: inline-block;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: bold;
+  font-size: 1.2rem;
+  padding: 1rem 0.5rem;
+}
+
+.breadcrumb-item a:hover {
+  color: #f14a58;
+}
+
+.breadcrumb-item h2 {
+  font-size: 1.8rem;
+}

@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Shopping Bag</title>
+  <!-- <link href="https://fonts.googleapis.com/css?family=Open+Sans:700|Roboto:400,500,700&display=swap" rel="stylesheet"> -->
+  <link rel="stylesheet" href="./css/common.css">
+  <link rel="stylesheet" href="./css/bread-crumb.css">
+  <link rel="stylesheet" href="./css/shopping-bag.css">
+</head>
+<body>
+  <div class="page-wrap">
+    <header class="header">
+      <div class="container">
+        <div class="header-top">
+          <div class="logo logo_mobile">
+            <a href="./start.html">TL</a>
+          </div>
+          <div class="logo logo_desktop">
+            <a href="./start.html">Template</a>
+          </div>
+
+          <div class="header__email">
+            <a href="mailto:">E-mail sing up</a>
+          </div>
+
+          <div class="header-bag">
+            <a class="header-bag__link" href="shopping-bag.html">
+              <div class="header-bag__img">
+                <img src="img/shopping-bag.svg" alt="shopping-bag icon">
+              </div>
+              <div id="miniBag" class="header-bag__inner">
+                Bag <span>&pound;(0)</span>
+              </div>
+            </a>
+          </div>
+
+          <div id="burger" class="burger">
+            <div></div>
+          </div>
+        </div>
+
+        <div id="headerBottom" class="header-bottom">
+          <div class="header-bottom__wrap">
+            <nav class="menu">
+              <ul class="menu__list">
+                <li class="menu__item">
+                  <a class="menu__link active" href="./catalog.html">Woman</a>
+                </li>
+                <li class="menu__item">
+                  <a class="menu__link" href="./catalog.html">Men</a>
+                </li>
+                <li class="menu__item">
+                  <a class="menu__link" href="./catalog.html">Handbags</a>
+                </li>
+                <li class="menu__item">
+                  <a class="menu__link" href="./catalog.html">Accessories</a>
+                </li>
+                <li class="menu__item">
+                  <a class="menu__link" href="./catalog.html">Sale</a>
+                </li>
+                <li class="menu__item">
+                  <a class="menu__link" href="./catalog.html">New Arrivals</a>
+                </li>
+                <li class="menu__item">
+                  <a class="menu__link" href="./catalog.html">Clearance</a>
+                </li>
+                <li class="menu__item">
+                  <a class="menu__link" href="./catalog.html">Store Locator</a>
+                </li>
+              </ul>
+            </nav>
+
+            <div class="search">
+              <div class="search__wrap">
+                <input type="search" value="" placeholder="Style Name">
+                <!-- <span>&#128269;</span> -->
+                <img src="img/search.svg" alt="search">
+              </div>
+            </div>
+          </div>
+        </div> <!--header-bottom-->
+      </div>
+    </header>
+    <div class="line-separator"></div>
+
+    <div class="container">
+      <div class="breadcrumbs">
+        <div class="breadcrumb-item">
+          <h2>Shoping bag</h2>
+        </div>
+      </div>
+    </div>
+    <div class="line-separator"></div>
+
+
+    <main class="main">
+       <section class="container">
+         <div id="allOrder" class="all-order">
+          <!-- <div class="one-order-item">
+            <div class="one-order-thumb new">
+              <a href="">
+                <img src="img/only-skinny-jeans.png" alt="only-skinny-jeans">
+              </a>
+            </div>
+
+            <div class="one-order-right">
+              <div class="one-order-info">
+                <h6 class="one-order-info__title">Only skinny jeans</h6>
+                <span class="one-order-info__price">&pound;65.50</span>
+              </div>
+
+              <div class="one-order-control">
+                <p class="one-order-control__color">
+                  Color: <span>Green</span>
+                </p>
+                <p class="one-order-control__size">
+                  Size: <span>UK 19</span>
+                </p>
+                <div class="one-order-control__qty">
+                  Quantity:
+                  <span id="minus" class="minus">_</span>
+                  <input class="input-qty" type="text" value="1" maxlength="3" >
+                  <span id="minus" class="plus">+</span>
+                </div>
+              </div>
+
+              <div id="removeItem" class="remove-item">
+                <span>Remove item</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="one-order-item">
+            <div class="one-order-thumb new">
+              <a href="">
+                <img src="img/only-skinny-jeans.png" alt="only-skinny-jeans">
+              </a>
+            </div>
+
+            <div class="one-order-right">
+              <div class="one-order-info">
+                <h6 class="one-order-info__title">Only skinny jeans</h6>
+                <span class="one-order-info__price">&pound;65.50</span>
+              </div>
+
+              <div class="one-order-control">
+                <p class="one-order-control__color">
+                  Color: <span>Green</span>
+                </p>
+                <p class="one-order-control__size">
+                  Size: <span>UK 19</span>
+                </p>
+                <div class="one-order-control__qty">
+                  Quantity:
+                  <span id="minus" class="minus">_</span>
+                  <input class="input-qty" type="text" value="1" maxlength="3" >
+                  <span id="minus" class="plus">+</span>
+                </div>
+              </div>
+
+              <div id="removeItem" class="remove-item">
+                <span>Remove item</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="one-order-item">
+            <div class="one-order-thumb new">
+              <a href="">
+                <img src="img/only-skinny-jeans.png" alt="only-skinny-jeans">
+              </a>
+            </div>
+
+            <div class="one-order-right">
+              <div class="one-order-info">
+                <h6 class="one-order-info__title">Only skinny jeans</h6>
+                <span class="one-order-info__price">&pound;65.50</span>
+              </div>
+
+              <div class="one-order-control">
+                <p class="one-order-control__color">
+                  Color: <span>Green</span>
+                </p>
+                <p class="one-order-control__size">
+                  Size: <span>UK 19</span>
+                </p>
+                <div class="one-order-control__qty">
+                  Quantity:
+                  <span id="minus" class="minus">_</span>
+                  <input class="input-qty" type="text" value="1" maxlength="3" >
+                  <span id="minus" class="plus">+</span>
+                </div>
+              </div>
+
+              <div id="removeItem" class="remove-item">
+                <span>Remove item</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="one-order-item">
+            <div class="one-order-thumb new">
+              <a href="">
+                <img src="img/only-skinny-jeans.png" alt="only-skinny-jeans">
+              </a>
+            </div>
+
+            <div class="one-order-right">
+              <div class="one-order-info">
+                <h6 class="one-order-info__title">Only skinny jeans</h6>
+                <span class="one-order-info__price">&pound;65.50</span>
+              </div>
+
+              <div class="one-order-control">
+                <p class="one-order-control__color">
+                  Color: <span>Green</span>
+                </p>
+                <p class="one-order-control__size">
+                  Size: <span>UK 19</span>
+                </p>
+                <div class="one-order-control__qty">
+                  Quantity:
+                  <span id="minus" class="minus">_</span>
+                  <input class="input-qty" type="text" value="1" maxlength="3" >
+                  <span id="minus" class="plus">+</span>
+                </div>
+              </div>
+
+              <div id="removeItem" class="remove-item">
+                <span>Remove item</span>
+              </div>
+            </div>
+          </div>  -->
+
+         </div> <!--all-order-->
+       </section>
+
+       <div class="line-separator"></div>
+
+       <div class="bag-notice">
+         <section class="container">
+           <p class="bag-notice__title">
+             You've qualified for Free UK Next Day Delivery on your order.
+             Don't forget to enter the code <span class="mark">nexday</span> at checkout
+           </p>
+         </section>
+       </div>
+
+
+       <section class="container">
+         <div class="checkout-wrap">
+           <div id="orderSum" class="order-sum">
+             <!-- <div class="order-sum__discount">
+                 Applied discount: <span>£15.00</span>
+             </div> -->
+             
+           </div>
+           <a id="checkout" class="btn checkout" href="#">
+             <span>Checkout</span>
+           </a>
+           <div id="emptyBag" class="empty-bag">
+             <span>Empty bag</span>
+           </div>
+         </div>
+       </section>
+
+    </main>
+    <div class="line-separator"></div>
+
+
+    <footer class="footer">
+      <div class="footer-left-up">
+        <div class="footer-inner">
+          <div class="links-list">
+            <h6>Quick Links</h6>
+            <ul>
+              <li><a href="#">Store locator</a></li>
+              <li><a href="#">Gift cards</a></li>
+              <li><a href="#">Size guide</a></li>
+              <li><a href="#">About us</a></li>
+              <li><a href="#">Support</a></li>
+            </ul>
+          </div>
+
+          <div class="links-list">
+            <h6>Customer Care</h6>
+            <ul>
+              <li><a href="#">Customer service</a></li>
+              <li><a href="#">Track my order</a></li>
+              <li><a href="#">Return policy</a></li>
+              <li><a href="#">Shipping & delivery</a></li>
+              <li><a href="#">Contact us</a></li>
+              <li><a href="#">Careers</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="line-separator"></div>
+      </div>
+
+
+      <div class="footer-right-down">
+       <div class="footer-inner">
+         <div class="links-list">
+           <h6>Questions</h6>
+           <ul>
+             <li>
+               <a href="#">
+                 <img src="img/twitter.svg" alt="twitter">
+                 Tweet us <b>@template</b>
+               </a>
+             </li>
+           </ul>
+         </div>
+
+         <div class="links-list">
+           <h6>Order by phone</h6>
+           <ul>
+             <li><a href="tel:88004094712">8-800-409-47-12</a></li>
+           </ul>
+         </div>
+       </div>
+       <div class="line-separator"></div>
+      </div>
+
+      <div class="slogan footer-slogan">
+        We have our own delivery service which operates in
+        23 major European cities. Delivery time - 3-5 days.
+      </div>
+
+      <div class="legal-notice">
+        <ul>
+          <li><a href="#">Legal notice</a></li>
+          <li><a href="#">Privacy policy</a></li>
+          <li><a href="#">Site map</a></li>
+        </ul>
+        <div class="line-separator"></div>
+      </div>
+
+      <div class="footer-social">
+        <a href="#"><img src="img/facebook.svg" alt="facebook"></a>
+        <a href="#"><img src="img/twitter-active.svg" alt="twitter-active"></a>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy;2010-<span>2015</span>, The Template Group Inc.</p>
+        <div class="share">
+          <span>Share</span>
+          <a class="share__link" href="#">1 437</a>
+        </div>
+      </div>
+    </footer>
+
+  </div> <!--page wrap-->
+
+  <script src="./data/catalog.js"></script>
+  <script src="./js/common.js"></script>
+  <script src="./js/shopping-bag.js"></script>
+</body>
+</html>
