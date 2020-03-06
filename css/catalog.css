@@ -1,8 +1,6 @@
 /*Common*/
 
 @media (min-width: 375px) {
-  /* .filter-submenu .active,
-  .filter-submenu .active a, */
   .selected,
   .selected a {
     color: #f14a58;
@@ -11,7 +9,6 @@
   li:first-child.active,
   li:first-child.active a {
     font-family: 'Open Sans', sans-serif;
-    /* font-size: 1.4rem; */
     font-weight: bold;
     color: #000!important;
   }
@@ -26,13 +23,6 @@
 /* Filter */
 /*********/
 @media (min-width: 375px) {
-  .filter-wrap {
-    /* position: relative; */
-  }
-  /* .filter-mobile {
-    position: relative;
-  } */
-
   .filter-nav {
     position: relative;
     padding: 1.5rem 1rem;
@@ -125,7 +115,6 @@
   .filter-menu {
     display: none;
     position: relative;
-    /* min-height: 1px; */
     width: 100%;
   }
 
@@ -144,7 +133,6 @@
     -ms-flex-flow: row wrap;
     flex-flow: row wrap;
     width: 100%;
-    /* min-height: 100%; */
     margin-top: 2px;
     background-color: #fff;
     z-index: 99999;
@@ -335,7 +323,6 @@
     box-shadow: 0 4px 4px 0 rgba(0,0,0,0.2);
   }
 }
-
 
 
 /*************/

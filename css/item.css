@@ -68,7 +68,7 @@
     font-size: 1.8rem;
   }
 
-  .item-info__price {    
+  .item-info__price {
     padding-bottom: 2rem;
   }
 
@@ -125,12 +125,10 @@
     -ms-flex-flow: row nowrap;
     flex-flow: row nowrap;
     height: 100%;
-    /* padding: 1rem 0 3rem; */
   }
 
   .full-preview {
     flex: auto;
-    /* flex: 75%; */
   }
 
   .thumbs-preview {
@@ -138,10 +136,6 @@
     flex-flow: column nowrap;
     height: 100%;
     flex: 0 0 25%;
-  }
-
-  .thumbs-preview__img {
-    /* flex: auto; */
   }
 
   .item-size,

@@ -1,16 +1,11 @@
 'use strict';
 
-// document.onclick = function(e) {
-//   console.log(e.target);
-//   alert(e.target);
-// }
-
 window.addEventListener('load', () => {
   showBag();
   showTotalSum();
 });
 
-//bag from common.js
+//let bag from common.js (Global)
 
 let allOrder = document.getElementById('allOrder');
 let emptyBag = document.getElementById('emptyBag');
@@ -94,32 +89,16 @@ function showBag() {
       plusGoods.call(this);
     }
   }
-  // for(let plus of pluses) {
-  //   plus.onclick = function() {
-  //     plusGoods.call(this);
-  //   }
-  // }
 
   let minuses = document.getElementsByClassName('minus');
   for (var i = 0; i < minuses.length; i++) {
     minuses[i].onclick = minusGoods;
   }
-  // for(let minus of minuses) {
-  //   minus.onclick = function() {
-  //     minusGoods.call(this);
-  //   }
-  // }
 
   let removes = document.getElementsByClassName('remove-item');
   for (let i = 0; i < removes.length; i++) {
     removes[i].onclick = removeGoods;
   }
-
-  // for(let remove of removes) {
-  //   remove.onclick = function() {
-  //     removeGoods.call(this);
-  //   }
-  // }
 }
 
 //Show bottom total sum
@@ -139,17 +118,17 @@ function showTotalSum() {
     });
   });
 
-  // currency = count != 0 ? currency : '';
   let dis = `
     <div class="order-sum__discount">
         Applied discount: <span>${currency} ${window.bestOffer.discount.toFixed(2)}</span>
     </div>`;
 
   let isDis = hasDiscount() ? dis : '';
+  let curr = count > 0 ? currency : '';
 
   let html = `
     ${isDis}
-    <p>Total price: <strong>${currency} ${totalPrice}</strong></p>`;
+    <p>Total price: <strong>${curr} ${totalPrice}</strong></p>`;
   orderSum.innerHTML = html;
 }
 
@@ -233,7 +212,6 @@ function clearBag() {
 //****************//
 // Check discount //
 //****************//
-
 
 //Check the discounts from the localStorage
 function checkDiscount() {

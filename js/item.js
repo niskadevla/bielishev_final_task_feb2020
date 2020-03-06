@@ -2,15 +2,9 @@
 
 let itemWrap = document.getElementById('itemWrap');
 
-//Empty viewed from bag
-// window.addEventListener('unload', function() {
-//   localStorage.removeItem('viewed');
-// });
-
 //Check the viewed goods
 function checkViewed() {
   if( localStorage.getItem('viewed') ) {
-    // viewedId = JSON.parse( localStorage.getItem('viewed') );
     viewedId = localStorage.getItem('viewed');
   }
 }
@@ -47,10 +41,6 @@ function showViewdItem() {
         `<span class="old-price">${currency}${(viewedItem.price).toFixed(2)}</span>
         <span class="card__price">${currency}${(viewedItem.discountedPrice).toFixed(2)}</span>` :
         `<span class="card__price">${currency}${(viewedItem.price).toFixed(2)}</span>`;
-      //${currency}${viewedItem.price}
-      // <span class="item-info__price">
-      //   ${price}
-      // </span>
   html += `
     </div>
   </div>
@@ -108,11 +98,7 @@ window.addEventListener('load', function() {
 
 
 
-  btnToBag.onclick = addToBag;
-  // function(e) {
-  //   // e.preventDefault();
-  //   addToBag.call(this);
-  // }
+  btnToBag.onclick = addToBag; 
 
   //Add the good to bag
   function addToBag() {

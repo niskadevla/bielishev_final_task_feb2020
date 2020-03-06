@@ -51,13 +51,6 @@ function showMiniBag() {
 }
 /****/
 
-//Add to view
-// window.addEventListener('load', function() {
-//   let toViewEls = document.querySelectorAll('a[href$="item.html"]');
-//
-//   toViewEls.forEach( (el) => el.onclick = addToView);
-// });
-
 document.addEventListener('click', addToView);
 
 function addToView(e) {
@@ -67,10 +60,4 @@ function addToView(e) {
     viewedId = a.dataset.id;
     localStorage.setItem('viewed', viewedId);
   }
-
-
-  // if(viewedId) {
-  //   // localStorage.setItem('viewed', JSON.stringify(viewedId));
-  //   localStorage.setItem('viewed', viewedId);
-  // }
 }

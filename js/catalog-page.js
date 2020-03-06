@@ -30,8 +30,6 @@ window.onresize = function() {
   showPage();
 }
 
-// window.addEventListener('load', showPage);
-
 function showPage() {
   renderGoods();
 }
@@ -58,10 +56,6 @@ let promo = `
       This offer is valid in-store and online. Prices displayed reflect this additional discount. This offer ends at 11:59 GMT on March 1st 2019
     </p>
   </div>`;
-
-// function insertPromo(i) {
-//
-// }
 
 /*Render goods on page*/
 function renderGoods() {
@@ -134,18 +128,16 @@ function addEventMenuList(e) {
 
   //reRendering
   showFilters(ul.dataset.name, +selectedLi.dataset.index);
-  // showFiltersNav();
-  // selectedLi.classList.add('active');
 }
   /****/
 
 //Render filters
 function showFilters(selectedName, activeNum) {
   let html = '';
-  // let html2 = '<ul><li>';
   let arr = [];
   let ul = filterNav.querySelector('ul');
 
+  //Remove list for filte nav mobile
   if(ul) {
     ul.remove();
   }
@@ -161,8 +153,6 @@ function showFilters(selectedName, activeNum) {
     }
 
     arr.push(name2);
-    // html2 += `
-    //   <li><a class="filter-nav__link ${selected}">${name2},</a></li>`;
 
     html += `
       <li class="filter-menu-main__item ${selected}">
@@ -175,7 +165,6 @@ function showFilters(selectedName, activeNum) {
           <ul data-name="${name}">`;
 
     FilterNames[name].forEach( (item, i) => {
-      // let active = (i === activeNum) && !!selectedName ? 'active' : '';
       let active = 'active';
       if(i === activeNum && !!selected) {
         html += `<li class="${active}" data-index="${i}"><a href="#">${item}</a></li>`;
@@ -200,10 +189,3 @@ function showFilters(selectedName, activeNum) {
 }
 
 showFilters('Fashion', 2);
-
-//Show filter nav for mobile
-// function showFiltersNav() {
-//   let html = '';
-//
-//   filterNav.insertAdjacentHTML('afteBefore', html2);
-// }

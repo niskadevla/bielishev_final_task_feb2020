@@ -14,7 +14,6 @@
     -ms-flex-flow: column nowrap;
     flex-flow: column nowrap;
     padding-bottom: 1.5rem;
-    /* padding: 1.5rem 0; */
   }
 
   .one-order-item {
@@ -87,14 +86,9 @@
     color: #f14a58;
   }
 
-  /*one-order-right*/
   .one-order-right {
     padding: 1rem 4rem 1rem 2rem;
   }
-
-  /* .one-order-info {
-
-  } */
 
   .one-order-info__title {
     font-size: 1.2rem;
@@ -154,7 +148,6 @@
     -ms-user-select: none;
     -o-user-select: none;
     user-select: none;
-    /* padding: 0 0.5rem; */
   }
 
   .minus {
@@ -203,7 +196,6 @@
     font-size: 1rem;
     line-height: 1.5;
     padding: 0.75rem 0;
-    /* margin-bottom: 1.5rem; */
     text-align: center;
   }
 
@@ -255,10 +247,8 @@
 
 @media (min-width: 768px) {
   .all-order {
-    /* display: flex; */
     -ms-flex-flow: row wrap;
     flex-flow: row wrap;
-    /* padding: 1.5rem 0; */
   }
 
   .one-order-item {
@@ -268,23 +258,8 @@
   }
 
   .checkout-wrap {
-    /* display: flex; */
     -ms-flex-flow: row-reverse nowrap;
     flex-flow: row-reverse nowrap;
     justify-content: space-between;
-    /* align-items: center; */
-  }
-}
-
-@media (min-width: 1024px) {
-  /* .all-order {
-    display: flex;
-    flex-flow: row wrap;
-    padding: 1.5rem 0;
-  } */
-
-  .one-order-thumb {
-    /* flex: 0 0 50%; */
-
   }
 }

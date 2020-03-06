@@ -7,22 +7,15 @@ let rightSlider = document.getElementById('rightSlider');
 let totalPriceBO = document.getElementById('totalPriceBO');
 let btnToBag = document.getElementById('btnToBag');
 
-// let leftQty = window.bestOffer.left.length;
-// let rightQty = window.bestOffer.right.length;
-// let bestOfferInner = document.getElementById('bestOfferInner');
-
 //isObjectEmpty
 function isObjectEmpty(obj) {
-  console.log(obj);
   for(var key in obj) {
-    console.log(key);
     return;
   }
   return true;
 }
 
 function showPage() {
-  // renderBestOffer();
   renderGoods();
 }
 
@@ -91,28 +84,8 @@ function sortByBestOffer(arr) {
   return newArr;
 }
 
-// window.bestOffer.left.forEach( (str) => {
-//   for(let i = 0; i < window.catalog.length; i++)
-//     if(window.catalog[i].id === str) {
-//       lefts.push(window.catalog[i]);
-//       break;
-//     }
-// });
-
-// window.bestOffer.right.forEach( (str) => {
-//   for(let i = 0; i < window.catalog.length; i++)
-//     if(window.catalog[i].id === str) {
-//       rights.push(window.catalog[i]);
-//       break;
-//     }
-// });
-
 leftPrice = parseFloat(lefts[0].price);
 rightPrice = parseFloat(rights[0].price);
-
-// function eventLeftSlider(e) {
-//   let target = e.target;
-// }
 
 function renderLeftSlider(e) {
   let target = e.target;
@@ -123,8 +96,6 @@ function renderLeftSlider(e) {
 
   let leftQty = window.bestOffer.left.length;
 
-  // let newIndexUp = index > 0 && index < leftQty - 1 ? index - 1 : 0;
-  // let newIndexDown = index < leftQty - 1 ? index + 1 : 0;
   let newIndexUp;
   let newIndexDown;
 
@@ -178,7 +149,6 @@ function renderLeftSlider(e) {
 
 leftSlider.addEventListener('click', renderLeftSlider);
 
-
 function renderRightSlider(e) {
   let target = e.target;
   let index = +target.dataset.index;
@@ -190,7 +160,6 @@ function renderRightSlider(e) {
   let newIndexUp;
   let newIndexDown;
 
-  // leftPrice = parseFloat(lefts[0].price);
   rightPrice = parseFloat(rights[index].price);
 
   renderPrice();
@@ -262,8 +231,6 @@ let discounts = {
   right: []
 };
 
-// console.log(isObjectEmpty(localStorage.getItem('discounts')) );
-
 //Check the discounts from the localStorage
 function checkDiscount() {
   if( !isObjectEmpty( JSON.parse(localStorage.getItem('discounts') )) ) {
@@ -271,14 +238,12 @@ function checkDiscount() {
   }
 }
 
-btnToBag.onclick = function(e) {
-  // e.preventDefault();
+btnToBag.onclick = function() {
   addToBag.call(this, this.dataset.id_1);
   addToBag.call(this, this.dataset.id_2);
 
   let leftId = this.dataset.id_1;
   let rightId = this.dataset.id_2;
-  // [this.dataset.id_1, this.dataset.id_2];
 
   checkDiscount();
 
@@ -287,7 +252,6 @@ btnToBag.onclick = function(e) {
 
   localStorage.setItem('discounts', JSON.stringify(discounts));
 }
-
 
 //Add the good to bag
 function addToBag(id) {
